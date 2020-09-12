@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+<gradient android:startColor="@color/orange" android:gradientRadius="0.1dp"
+    android:angle="0"
+    android:centerColor="@color/card_view_background_color"
+    android:endColor="@color/orange"/>
+    <size android:height="0.01dp" android:width="250dp"/>
+    <stroke android:dashGap="2dp" android:dashWidth="10dp"/>
+    <corners android:radius="100dp"
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"
+        android:topRightRadius="40dp"/>
+</shape>

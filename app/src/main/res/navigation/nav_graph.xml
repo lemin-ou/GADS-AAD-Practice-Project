@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/formFragment">
+    <fragment
+        android:id="@+id/formFragment"
+        android:name="com.wellcherve.android.aadpracticeproject.FormFragment"
+        android:label="fragment_form"
+        tools:layout="@layout/fragment_form" >
+        <action
+            android:id="@+id/action_formFragment_to_dialog_submission"
+            app:destination="@id/dialog_submission" />
+    </fragment>
+    <dialog
+        android:id="@+id/dialog_submission"
+        android:name="com.wellcherve.android.aadpracticeproject.SubmissionDialogFragment"
+        tools:layout="@layout/fragment_dialog"
+        >
+        <action
+            android:id="@+id/action_dialog_submission_to_formFragment"
+            app:destination="@id/formFragment" />
+    </dialog>
+</navigation>

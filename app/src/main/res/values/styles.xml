@@ -1,0 +1,40 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="textStyle" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edit_text_shape</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColorHint">#807F7F</item>
+        <item name="hintTextAppearance">@style/TextAppearance.AppCompat.Large</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="ButtonSubmitStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/submit_button</item>
+        <item name="android:width">155dp</item>
+        <item name="android:minHeight">45dp</item>
+        <item name="android:textColor">@color/card_view_background_color</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+<!--    style for the splash screen -->
+    <style name="SplashScreenTheme" parent = "Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_screen_background</item>
+</style>
+    <style name="yesButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:width">145dp</item>
+        <item name="android:height">50dp</item>
+        <item name="android:background">@drawable/yes_button_background</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
