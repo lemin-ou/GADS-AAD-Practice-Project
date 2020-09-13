@@ -1,17 +1,17 @@
 package com.wellcherve.android.aadpracticeproject
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import com.wellcherve.android.aadpracticeproject.models.EMAIL_ADDRESS
 import com.wellcherve.android.aadpracticeproject.models.FIRST_NAME
 import com.wellcherve.android.aadpracticeproject.models.GITHUB_LINK
 import com.wellcherve.android.aadpracticeproject.models.LAST_NAME
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_form.*
+import java.lang.ClassCastException
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +27,19 @@ class FormFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    interface OnSubmitButtonClickedListener {
+        fun onSubmitButtonClickedListener(bundle: Bundle?)
+    }
+
+    var listener :OnSubmitButtonClickedListener? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as? OnSubmitButtonClickedListener
+        if (listener == null)
+            throw ClassCastException("$context must implement OnSubmitButtonClickedListener")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +58,6 @@ class FormFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         showDialog()
     }
 
@@ -56,7 +68,7 @@ class FormFragment : Fragment() {
             bundle.putString(LAST_NAME, lastName.text.toString())
             bundle.putString(EMAIL_ADDRESS, email.text.toString())
             bundle.putString(GITHUB_LINK, githubLink.text.toString())
-            findNavController().navigate(R.id.action_formFragment_to_dialog_submission, bundle)
+            listener?.onSubmitButtonClickedListener(bundle)
         }
     }
 }
