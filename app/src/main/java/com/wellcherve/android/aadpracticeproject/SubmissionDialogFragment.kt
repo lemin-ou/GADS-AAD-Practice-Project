@@ -94,6 +94,12 @@ private const val TAG = "SubmissionDialogFragment"
                                     null
                                 )
                             )
+                            val dialogConfirmation = dialogConfirmationBuilder.create()
+                            dialogConfirmation.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialogConfirmation.setOnDismissListener {
+                                goToFormFragment()
+                            }
+                            dialogConfirmation.show()
                         }
 
                         override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -103,16 +109,17 @@ private const val TAG = "SubmissionDialogFragment"
                                     null
                                 )
                             )
+                            val dialogConfirmation = dialogConfirmationBuilder.create()
+                            dialogConfirmation.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+                            dialogConfirmation.setOnDismissListener {
+                                goToFormFragment()
+                            }
+                            dialogConfirmation.show()
                         }
                     })
                 }
             }
-            val dialogConfirmation = dialogConfirmationBuilder.create()
-            dialogConfirmation.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialogConfirmation.show()
-            dialogConfirmation.setOnDismissListener {
-                  goToFormFragment()
-            }
+
         }
 
       return  dialog
