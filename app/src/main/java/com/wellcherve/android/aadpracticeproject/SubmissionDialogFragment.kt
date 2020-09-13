@@ -70,44 +70,43 @@ private const val TAG = "SubmissionDialogFragment"
         }
         layout.yes.setOnClickListener {
             dialog.dismiss()
-//            val retrofit = Retrofit.Builder()
-//                .baseUrl("https://docs.google.com/dd/d/e/")
-//                .addConverterFactory(GsonConverterFactory.create())
-//                .build()
-//
-//            val service: SendSubmission =
-//                retrofit.create(SendSubmission::class.java)
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://docs.google.com/form/d/e/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val service: SendSubmission =
+                retrofit.create(SendSubmission::class.java)
             val dialogConfirmationBuilder = AlertDialog.Builder(activity)
-//            Log.i(TAG, "yes button clicked")
-//            arguments.let {
-//                val email = it?.getString(EMAIL_ADDRESS)
-//                val firstName = it?.getString(FIRST_NAME)
-//                val lastName = it?.getString(LAST_NAME)
-//                val link = it?.getString(GITHUB_LINK)
-//                if (email != null && firstName != null && lastName != null && link != null) {
-//                    val sendFormData: Call<Void> =
-//                        service.sendFormData(email, firstName, lastName, link)
-//                    sendFormData.enqueue(object : Callback<Void> {
-//                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+            arguments.let {
+                val email = it?.getString(EMAIL_ADDRESS)
+                val firstName = it?.getString(FIRST_NAME)
+                val lastName = it?.getString(LAST_NAME)
+                val link = it?.getString(GITHUB_LINK)
+                if (email != null && firstName != null && lastName != null && link != null) {
+                    val sendFormData: Call<Void> =
+                        service.sendFormData(email, firstName, lastName, link)
+                    sendFormData.enqueue(object : Callback<Void> {
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
                             dialogConfirmationBuilder.setView(
                                 inflater.inflate(
                                     R.layout.submission_successfull,
                                     null
                                 )
                             )
-//                        }
-//
-//                        override fun onFailure(call: Call<Void>, t: Throwable) {
-//                            dialogConfirmationBuilder.setView(
-//                                inflater.inflate(
-//                                    R.layout.submission_not_successfull,
-//                                    null
-//                                )
-//                            )
-//                        }
-//                    })
-//                }
-//            }
+                        }
+
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            dialogConfirmationBuilder.setView(
+                                inflater.inflate(
+                                    R.layout.submission_not_successfull,
+                                    null
+                                )
+                            )
+                        }
+                    })
+                }
+            }
             val dialogConfirmation = dialogConfirmationBuilder.create()
             dialogConfirmation.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             dialogConfirmation.show()
